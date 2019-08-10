@@ -1,14 +1,14 @@
 # 积分转盘活动
 
 # 功能
-> * 1、全局less变量common.less
-> * 2、组件化
-> * 3、静态资源js,css,图片放在cdn
-> * 4、微信授权与分享
-> * 5、禁止弹窗滚动穿透popitem.vue
-> * 6、使用yapi-mock模拟数据
-> * 7、vue-virtual-scroll-list长列表优化，区服列表数据过多
-> * 8、封装全局组件Toast、Loading、Pop
+> 1. 全局less变量common.less
+> 2. 组件化
+> 3. 静态资源js,css,图片放在cdn
+> 4. 微信授权与分享
+> 5. 禁止弹窗滚动穿透popitem.vue
+> 6. 使用yapi-mock模拟数据
+> 7. vue-virtual-scroll-list长列表优化，区服列表数据过多
+> 8. 封装全局组件Toast、Loading、Pop
 
 # 效果预览
 
