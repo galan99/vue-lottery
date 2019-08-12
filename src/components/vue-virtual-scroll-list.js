@@ -308,15 +308,16 @@ export default Vue.component('VirtualList', {
 
       index = parseInt(index, 10)
       index = Math.max(0, index)
+
       const lastStart = delta.total - delta.keeps
       const isLast = (index <= delta.total && index >= lastStart) || (index > delta.total)
       if (isLast) {
-        end = delta.total - 1
         start = Math.max(0, lastStart)
       } else {
         start = index
-        end = start + delta.keeps - 1
       }
+
+      end = start + delta.keeps - 1
 
       return {
         end,
@@ -481,6 +482,7 @@ export default Vue.component('VirtualList', {
     filter (h) {
       let delta = this.delta
       const slots = this.$slots.default || []
+
       // item-mode shoud judge from items prop.
       if (this.item) {
         delta.total = this.itemcount
@@ -516,13 +518,8 @@ export default Vue.component('VirtualList', {
       delta.offsetAll = allHeight - this.size * this.remain
 
       let renders = []
-      let end = Math.abs(delta.end)
-      if (delta.start === 0 && delta.total > 1 && end === 1) {
-        end = (delta.total - 1) > 15 ? 15 : delta.total - 1
-      }
-      console.log(slots)
-      //  console.log(delta.start, delta.total, delta.end, end)
-      for (let i = delta.start; i < delta.total && i <= end; i++) {
+      // console.log(delta.start, delta.total, delta.end, slots)
+      for (let i = delta.start; i < delta.total && i <= Math.ceil(delta.end); i++) {
         let slot = null
         if (this.item) {
           slot = h(this.item, this.itemprops(i))
@@ -531,6 +528,7 @@ export default Vue.component('VirtualList', {
         }
         renders.push(slot)
       }
+
       return renders
     }
   },
